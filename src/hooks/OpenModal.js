@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function useModal() {
-    
     const [isOpen, setisOpen] = useState(false);
 
     const toggle = () => {
@@ -10,6 +9,7 @@ export default function useModal() {
 
     return {
         isOpen,
-        toggle
+        toggle,
+        setisOpen,
     };
 }

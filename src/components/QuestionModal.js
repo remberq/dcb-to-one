@@ -1,26 +1,59 @@
-import style from "../styles/QuestionModal.module.css"
-import { CSSTransition } from "react-transition-group";
+import style from '../styles/QuestionModal.module.css';
+import {useEffect, useState} from "react";
 
-export function QuestionModal(props) {
+export function QuestionModal({ isOpen, modalClass, question }) {
+    const [isShowVideo, setIsShowVideo] = useState(false)
+    const pictureQuestion = question.picture
+    const videoQuestion = question.video
 
-    console.log("Open modal")
+    useEffect(() => {
+        if (!!videoQuestion) {
+            setTimeout(() => {
+                setIsShowVideo(true)
+            }, 3000)
+        }
 
-    if (!props.isOpen) {
-        return null
+        return () => {
+            setIsShowVideo(false)
+        }
+    }, [videoQuestion]);
+
+    if (!isOpen) {
+        return null;
     }
 
-    console.log("Open modal true")
+    const modalClassName =
+        modalClass === 'close'
+            ? `${style.Modal} ${style.closeModal}`
+            : style.Modal;
+    const renderQuestion
+        = () => {
+        if (pictureQuestion) {
+            return <div className={`${style.picWrapper} ${style[modalClass]}`}><img className={style.pic} src={pictureQuestion} alt={'pic'} /></div>
+        }
+        if (!!videoQuestion) {
+                return (
+                    <div className={`${style.videoPreview} ${style[modalClass]}`}>
+                        {isShowVideo ? (
+                            <video className={style.video} src={videoQuestion} autoPlay >
+                                Sorry, your browser doesn't support embedded videos.
+                            </video>
+                        ) : (
+                            <div>
+                                ВНИМАНИЕ! Видео вопрос!
+                            </div>
+                        )}
+                    </div>
+                )
+            }
 
+        return <div className={`${style.content} ${style[modalClass]}`}>
+            {question.question}
+        </div>
+    }
     return (
-        <CSSTransition
-            in={true}
-            timeout={4000}
-            classNames={{ ...style }}>
-            <div className={style.Modal} onClick={props.toogle}>
-                <div className={style.content}>
-                    {props.question}
-                </div>
+            <div className={modalClassName}>
+                    {renderQuestion()}
             </div>
-        </CSSTransition>
-    )
+    );
 }

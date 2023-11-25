@@ -12,7 +12,7 @@
 }
 
 .theme_item {
-    min-width: 100px;
+    min-width: 10px;
     display: flex;
     justify-items: center;
     align-items: center;
@@ -25,14 +25,138 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.active_row {
+    outline: 1px solid wheat
+}
+
 .deactivated {
+    min-width: 100px;
+    height: 59px;
     display: flex;
     justify-items: center;
     align-items: center;
     background-color: #565B62;
     color: #565B62;
-    padding: 20px;
     margin: 10px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+
+
+@keyframes clippath {
+    0%,
+    100% {
+        clip-path: inset(0 0 98% 0);
+    }
+    
+    25% {
+        clip-path: inset(0 98% 0 0);
+    }
+    50% {
+        clip-path: inset(98% 0 0 0);
+    }
+    75% {
+        clip-path: inset(0 0 0 98%);
+    }
+}
+  
+.myDiv {
+    position: relative;
+    text-align: center;
+    transition: all .3s;
+    cursor: pointer;
+
+    min-width: 100px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    background-color: #e5fcf7;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    &:hover {
+        filter: contrast(1.1);
+    }
+
+    &:active {
+        filter: contrast(0.9);
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid #e5fcf7;
+        transition: all .5s;
+        animation: clippath 3s infinite linear;
+        border-radius: 10px;
+    }
+
+    &::after {
+        animation: clippath 3s infinite -1.5s linear;
+    }
+}
+
+@keyframes NAME-YOUR-ANIMATION {
+    0%, 49% {
+        background: rgba(16, 127, 140, 1);
+        color: #e5fcf7;
+    }
+    50%, 100% {
+        background: #e5fcf7;
+        color: #565B62;
+
+    }
+}
+
+.question_animation {
+    position: relative;
+    text-align: center;
+    transition: all .3s;
+    cursor: pointer;
+    min-width: 100px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    /*background: rgb(16, 127, 140);*/
+    background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
+    color: #e5fcf7;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    animation: NAME-YOUR-ANIMATION 1s infinite;
+
+    &:hover {
+        filter: contrast(1.1);
+    }
+    
+    &:active {
+        filter: contrast(0.9);
+    }
+    
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid #e5fcf7;
+        transition: all 1.5s;
+        animation: clippath 1.5s infinite linear;
+        border-radius: 10px;
+    }
+    
+    &::after {
+        animation: clippath 1.5s infinite -1.5s linear;
+    }
 }

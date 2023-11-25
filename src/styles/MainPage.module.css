@@ -1,9 +1,48 @@
-.page {
+
+@keyframes background {
+    0% {
+        background-position:10% 0%;
+    }
+    50% {
+        background-position:91% 100%;
+    }
+    100% {
+        background-position:10% 0%;
+    }
+}
+
+@keyframes gra {
+    0% { left: -200%; top: -200%; }
+    50% { left: 0%; top: 0%; }
+    100% { left: -200%; top: -200%; }
+}
+
+/*.page {*/
+/*    height: 1000px;*/
+/*    width: 1000px;*/
+/*    !*background: rgb(17,73,56);*!*/
+/*    background: linear-gradient(135deg, rgba(17,73,56,1) 0%, rgba(17,67,73,1) 14%, rgba(23,56,60,1) 27%, rgba(0,0,0,1) 88%, rgba(0,0,0,1) 100%);*/
+/*    !*display: flex;*!*/
+/*    overflow: hidden;*/
+/*    position: relative;*/
+/*}*/
+
+.inner {
+    width: 100vw;
     height: 100vh;
-    width: 100%;
-    background: rgb(17,73,56);
-    background: linear-gradient(35deg, rgba(17,73,56,1) 0%, rgba(17,67,73,1) 14%, rgba(23,56,60,1) 27%, rgba(0,0,0,1) 88%, rgba(0,0,0,1) 100%);
+    overflow: hidden;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.animation {
+    z-index: -1;
+    width: 300%;
+    height: 300%;
+    position: absolute;
+    animation: gra 13s infinite;
+    -webkit-animation: gra 13s infinite;
+    background: linear-gradient(135deg, rgba(17,73,56,1) 0%, rgba(17,67,73,1) 14%, rgba(23,56,60,1) 27%, rgba(0,0,0,1) 88%, rgba(0,0,0,1) 100%);
 }

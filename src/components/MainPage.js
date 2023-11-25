@@ -1,19 +1,21 @@
+import { PlayField } from './PlayField';
+import styles from '../styles/MainPage.module.css';
 
-import { useReducer } from "react";
-import { PlayField } from "./PlayField";
-import styles from "../styles/MainPage.module.css"
-import { themeInitialState, ThemeContext, themeReducer } from "../state/ThemesReducer"
-
+import { useSelector} from 'react-redux';
+import {QuestionModal} from "./QuestionModal";
 
 export function MainPage() {
-
-    const [state, dispatch] = useReducer(themeReducer, themeInitialState);
+    const modal = useSelector((state) => state.game.modalState)
 
     return (
-        <ThemeContext.Provider value={{ dispatch, state }}>
-            <div className={styles.page}>
+        <>
+            <div className={styles.inner}>
                 <PlayField />
+                <div className={styles.animation}></div>
             </div>
-        </ThemeContext.Provider>
-    )
+            <QuestionModal
+                {...modal}
+            />
+        </>
+    );
 }

@@ -1,36 +1,78 @@
-import { ThemeItem } from "./ThemeItem"
-import styles from "../styles/PlayField.module.css"
-import { useContext } from "react";
-import { ThemeContext } from "../state/ThemesReducer"
+import { ThemeItem, QuestionItems } from './ThemeItem';
+import styles from '../styles/PlayField.module.css';
+import {useCallback, useEffect, useState} from 'react';
+import {useSelector} from "react-redux";
 
-const renderPlayThemes = (themes) => {
+const mainArr = ['q', 'w', 'e', 'r'];
+const questionArr = ['1', '2', '3', '4'];
 
-    return themes.map(theme => (
-        <tr className={styles.row}>
+export function PlayField() {
+    const [isOpenProcess, setOpenProcess] = useState(false)
+    const gameState = useSelector((state) => state.game.gameState)
+    const isModalOpen = useSelector((state) => state.game.modalState.isOpen)
+    const [combinationOne, setCombinationOne] = useState('');
+    const [combinationTwo, setCombinationTwo] = useState('');
 
-            <td>
-                <ThemeItem theme={theme}/>
-            </td>
+    const handleKeyDown = useCallback((e) => {
+        if (e.repeat) return;
+        if (!isModalOpen && !isOpenProcess) {
+            if (
+                mainArr.includes(e.key.toLowerCase()) &&
+                combinationOne !== e.key.toLowerCase()
+            ) {
+                setCombinationOne(e.key.toLowerCase());
+                setCombinationTwo('');
+            }
+            if (
+                questionArr.includes(e.key.toLowerCase()) &&
+                combinationTwo !== e.key.toLowerCase()
+            ) {
+                setCombinationTwo(e.key.toLowerCase());
+            }
 
-            {theme.questions.map(question => (
-                <td><ThemeItem question={question} /></td>
-            ))}
+            if (combinationOne === e.key.toLowerCase()) {
+                setCombinationOne('');
+            }
+            if (combinationTwo === e.key.toLowerCase()) {
+                setCombinationTwo('');
+            }
+        }
+    }, [combinationOne, combinationTwo, isModalOpen, isOpenProcess]);
 
-        </tr>
-    ))
-}
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
 
-export function PlayField(props) {
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [handleKeyDown]);
 
-    const { state, dispatch } = useContext(ThemeContext);
+    const combination = combinationOne + combinationTwo;
 
+    const renderPlayThemes = (themes, combination) => {
+        return themes.map((theme) => (
+            <tr key={theme.id} className={styles.row}>
+                <td>
+                    <ThemeItem combination={combination} theme={theme} />
+                </td>
+
+                {theme.questions.map((question) => (
+                    <td key={question.id}>
+                        <QuestionItems
+                            combination={combination}
+                            question={question}
+                            setOpenProcess={setOpenProcess}
+                        />
+                    </td>
+                ))}
+            </tr>
+        ));
+    };
     return (
         <div>
             <table>
-                <tbody>
-                    {renderPlayThemes(state)}
-                </tbody>
+                <tbody>{renderPlayThemes(gameState, combination)}</tbody>
             </table>
         </div>
-    )
+    );
 }
