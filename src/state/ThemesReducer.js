@@ -1,176 +1,171 @@
-import React from "react";
-export const ThemeContext = React.createContext();
-
+import picOne from '../assets/pictures/1.jpg'
+import video1 from '../assets/video/video1.MP4'
 export const themeInitialState = [
     {
-        id: 1,
-        theme: "Русский рэп",
+        id: 'q',
+        theme: 'Русский рэп',
         questions: [
             {
-                id: 1,
-                themeId: 1,
+                id: 'q1',
+                themeId: 'q',
                 cost: 100,
-                question: "Почему закрыли версус",
-                active: true
+                question: 'Почему закрыли версус',
+                active: true,
+                picture: picOne
             },
             {
-                id: 2,
-                themeId: 1,
+                id: 'q2',
+                themeId: 'q',
                 cost: 200,
-                question: "В каком году умер гуф",
-                active: true
+                question: 'В каком году умер гуф',
+                active: true,
+                video: video1
             },
             {
-                id: 3,
-                themeId: 1,
+                id: 'q3',
+                themeId: 'q',
                 cost: 400,
-                question: "В каком году умер гуф",
-                active: true
+                question: 'В каком году умер гуф',
+                active: true,
             },
             {
-                id: 4,
-                themeId: 1,
+                id: 'q4',
+                themeId: 'q',
                 cost: 1000,
-                question: "В каком году умер гуф",
-                active: true
-            }
-        ]
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
     },
     {
-        id: 2,
-        theme: "Дизайнеры третьей волны",
+        id: 'w',
+        theme: 'Дизайнеры третьей волны',
         questions: [
             {
-                id: 1,
-                themeId: 2,
+                id: 'w1',
+                themeId: 'w',
                 cost: 100,
-                question: "Почему дизайн закончился на упячке",
-                active: true
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
             },
             {
-                id: 1,
-                themeId: 2,
+                id: 'w2',
+                themeId: 'w',
                 cost: 200,
-                question: "Тут будет вопрос картинкой",
-                active: true
+                question: 'Тут будет вопрос картинкой',
+                active: true,
             },
             {
-                id: 3,
-                themeId: 1,
+                id: 'w3',
+                themeId: 'w',
                 cost: 400,
-                question: "В каком году умер гуф",
-                active: true
+                question: 'В каком году умер гуф',
+                active: true,
             },
             {
-                id: 4,
-                themeId: 1,
+                id: 'w4',
+                themeId: 'w',
                 cost: 1000,
-                question: "В каком году умер гуф",
-                active: true
-            }
-        ]
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
     },
     {
-        id: 3,
-        theme: "Шутки про фронтенд",
+        id: 'e',
+        theme: 'Шутки про фронтенд',
         questions: [
             {
-                id: 1,
-                themeId: 2,
+                id: 'e1',
+                themeId: 'e',
                 cost: 100,
-                question: "Почему дизайн закончился на упячке",
-                active: true
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
             },
             {
-                id: 1,
-                themeId: 2,
+                id: 'e2',
+                themeId: 'e',
                 cost: 200,
-                question: "Тут будет вопрос картинкой",
-                active: true
+                question: 'Тут будет вопрос картинкой',
+                active: true,
             },
             {
-                id: 3,
-                themeId: 1,
+                id: 'e3',
+                themeId: 'e',
                 cost: 400,
-                question: "В каком году умер гуф",
-                active: true
+                question: 'В каком году умер гуф',
+                active: true,
             },
             {
-                id: 4,
-                themeId: 1,
+                id: 'e4',
+                themeId: 'e',
                 cost: 1000,
-                question: "В каком году умер гуф",
-                active: true
-            }
-        ]
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
     },
     {
-        id: 4,
-        theme: "Русы против ящеров",
+        id: 'r',
+        theme: 'Русы против ящеров',
         questions: [
             {
-                id: 1,
-                themeId: 2,
+                id: 'r1',
+                themeId: 'r',
                 cost: 100,
-                question: "Почему дизайн закончился на упячке",
-                active: true
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
             },
             {
-                id: 1,
-                themeId: 2,
+                id: 'r2',
+                themeId: 'r',
                 cost: 200,
-                question: "Тут будет вопрос картинкой",
-                active: true
+                question: 'Тут будет вопрос картинкой',
+                active: true,
             },
             {
-                id: 3,
-                themeId: 1,
+                id: 'r3',
+                themeId: 'r',
                 cost: 400,
-                question: "В каком году умер гуф",
-                active: true
+                question: 'В каком году умер гуф',
+                active: true,
             },
             {
-                id: 4,
-                themeId: 1,
+                id: 'r4',
+                themeId: 'r',
                 cost: 1000,
-                question: "В каком году умер гуф",
-                active: true
-            }
-        ]
-    }
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
 ];
-
-export const themeReducer = (themes, action) => {
-    switch (action.type) {
-        case 'ADD_WORD':
-            return themes.map(theme => {
-
-                console.log(JSON.stringify(theme))
-
-                if (theme.id === action.payload) {
-                    theme.theme = "HUI"
-                }
-
-                return theme
-            });
-        case 'OPEN_QUESTION':
-            return themes.map(theme => {
-
-                console.log(action.payload.themeId)
-
-                if (theme.id === action.payload.themeId) {
-                    console.log('OPEN_THEME')
-                    theme.questions.map(question => {
-                        if (question.id === action.payload.id) {
-                            console.log('OPEN_QUESTION')
-                            question.active = false
-                        }
-                        return question
-                    })
-                }
-                return theme
-            })
-        default:
-            return themes
-    }
-};
+//
+// export const themeReducer = (themes, action) => {
+//     switch (action.type) {
+//         case 'ADD_WORD':
+//             return themes.map((theme) => {
+//                 if (theme.id === action.payload) {
+//                     theme.theme = 'HUI';
+//                 }
+//
+//                 return theme;
+//             });
+//         case 'OPEN_QUESTION':
+//             return themes.map((theme) => {
+//                 let newTheme = {...theme};
+//                 if (theme.id === action.payload.themeId) {
+//                     newTheme.questions.map((question) => {
+//                         let test = {...question}
+//                         if (test.id === action.payload.id) {
+//                             test.active = false;
+//                         }
+//                         return test;
+//                     });
+//                 }
+//                 return newTheme;
+//             });
+//         default:
+//             return themes;
+//     }
+// };
