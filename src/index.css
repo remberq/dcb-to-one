@@ -13,6 +13,6 @@ code {
 }
 
 * {
-   /*cursor: none !important;*/
+  cursor: none !important;
   box-sizing: border-box;
 }
