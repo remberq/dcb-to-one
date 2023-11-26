@@ -56,6 +56,13 @@
     animation: 1.3s fadeOutModal ease-out;
 }
 
+.content2 {
+    width: 840px;
+    height: 480px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
 .content{
     display: flex;
     text-align: center;
@@ -67,8 +74,44 @@
     color: #FFFFFF;
     padding: 20px;
     border-radius: 10px;
-    width: 300px;
-    height: 300px;
+    width: 840px;
+    height: 480px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 32px;
+    width: 840px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 8px 8px 0px 0px;
+    background: linear-gradient(90deg, #005E7F 0%, #107F8C 103.67%);
+    color: #FFF;
+
+    text-align: center;
+    font-family: SB Sans Interface, sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.body {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    padding: 0 32px;
+    text-align: center;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    color: #1F1F22;
+    font-family: SB Sans Interface, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px; /* 133.333% */
 }
 
 .open {
@@ -93,8 +136,8 @@
 }
 
 .pic {
-    width: 600px;
-    height: 400px;
+    width: 840px;
+    height: 480px;
     border-radius: 10px;
 }
 

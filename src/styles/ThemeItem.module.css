@@ -1,24 +1,47 @@
 .item {
     min-width: 100px;
-    display: flex;
     justify-items: center;
-    align-items: center;
     background-color: #e5fcf7;
-    color: #565B62;
-    padding: 20px;
     margin: 10px;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    display: flex;
+    width: 133px;
+    padding: 13px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    height: 66px;
+
+    color: #1F1F22;
+
+    text-align: center;
+    font-family: SB Sans Interface, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+
 }
 
 .theme_item {
+    width: 470px;
+    height: 66px;
     min-width: 10px;
     display: flex;
     justify-items: center;
     align-items: center;
-    background: rgb(16, 127, 140);
-    background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
-    color: #e5fcf7;
+    /*background: rgb(16, 127, 140);*/
+    background: linear-gradient(90deg, #005E7F 0%, #107F8C 103.67%);
+    color: #FFF;
+    text-align: center;
+    font-family: SB Sans Interface, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
     padding: 20px;
     margin: 10px;
     border-radius: 5px;
@@ -31,11 +54,11 @@
 
 .deactivated {
     min-width: 100px;
-    height: 59px;
+    height: 66px;
     display: flex;
     justify-items: center;
     align-items: center;
-    background-color: #565B62;
+    background-color: rgba(86, 91, 98, 0.50);;
     color: #565B62;
     margin: 10px;
     border-radius: 5px;
@@ -105,34 +128,72 @@
 }
 
 @keyframes NAME-YOUR-ANIMATION {
-    0%, 49% {
-        background: rgba(16, 127, 140, 1);
-        color: #e5fcf7;
+    0%, 12% {
+        background: #FFB13B;
+        color: #FFF;
     }
-    50%, 100% {
-        background: #e5fcf7;
-        color: #565B62;
+    13%, 25% {
+        background: #FFF;
+        color: #1F1F22;
+
+    }
+    26%, 37% {
+        background: #FFB13B;
+        color: #FFF;
+    }
+    38%, 50% {
+        background: #FFF;
+        color: #1F1F22;
+    }
+    51%, 63% {
+        background: #FFB13B;
+        color: #FFF;
+    }
+    64%, 75% {
+        background: #FFF;
+        color: #1F1F22;
+
+    }
+    76%, 87% {
+        background: #FFB13B;
+        color: #FFF;
+    }
+    88%, 100% {
+        background: #FFF;
+        color: #1F1F22;
 
     }
 }
 
 .question_animation {
     position: relative;
-    text-align: center;
     transition: all .3s;
     cursor: pointer;
     min-width: 100px;
-    display: flex;
     justify-items: center;
-    align-items: center;
     /*background: rgb(16, 127, 140);*/
     background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
-    color: #e5fcf7;
-    padding: 20px;
     margin: 10px;
     border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    animation: NAME-YOUR-ANIMATION 1s infinite;
+    animation: NAME-YOUR-ANIMATION 2s infinite;
+    animation-timing-function: linear;
+    display: flex;
+    width: 133px;
+    padding: 13px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+
+    color: #1F1F22;
+
+    text-align: center;
+    font-family: SB Sans Interface, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
 
     &:hover {
         filter: contrast(1.1);

@@ -1,5 +1,6 @@
 import picOne from '../assets/pictures/1.jpg'
 import video1 from '../assets/video/video1.MP4'
+import music1 from '../assets/music/sber.mp3'
 export const themeInitialState = [
     {
         id: 'q',
@@ -25,8 +26,9 @@ export const themeInitialState = [
                 id: 'q3',
                 themeId: 'q',
                 cost: 400,
-                question: 'В каком году умер гуф',
+                question: 'В каком году умер гуф Тут будет вопрос картинкой Тут будет вопрос картинкой Тут будет вопрос картинкой',
                 active: true,
+                music: music1
             },
             {
                 id: 'q4',
@@ -120,7 +122,7 @@ export const themeInitialState = [
                 id: 'r2',
                 themeId: 'r',
                 cost: 200,
-                question: 'Тут будет вопрос картинкой',
+                question: 'Тут будет вопрос картинкой ',
                 active: true,
             },
             {
