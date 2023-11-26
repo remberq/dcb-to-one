@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect} from 'react';
 import styles from '../styles/ThemeItem.module.css';
 
 import {batch, useDispatch, useSelector} from "react-redux";
@@ -13,7 +13,7 @@ export function ThemeItem({ theme, combination }) {
         <div
             className={`${styles.theme_item} ${themeStyle}`}
         >
-            {theme.theme}1
+            {theme.theme}
         </div>
     );
 }
@@ -29,20 +29,18 @@ export const QuestionItems = ({ question, combination, setOpenProcess }) => {
         : styles.item;
 
     useEffect(() => {
-        if (isSelectedRowQuestion) {
+        if (isSelectedRowQuestion && !isFilledQuestion) {
             setOpenProcess(true)
             setTimeout(() => {
-                if (isSelectedRowQuestion) {
-                    batch(() => {
-                        dispatch(setModalState({isOpen: true, modalClass: 'open', question: question}))
-                        dispatch(setQuestionFill(combination))
-                        setOpenProcess(false)
-                    })
-                }
+                batch(() => {
+                    dispatch(setModalState({isOpen: true, modalClass: 'open', question: question, rowId: combination[0]}))
+                    dispatch(setQuestionFill(combination))
+                    setOpenProcess(false)
+                })
             }, 2000);
         }
 
-    }, [combination, dispatch, isSelectedRowQuestion, question]);
+    }, [combination, dispatch, isSelectedRowQuestion, question, isFilledQuestion, setOpenProcess]);
 
     const handleKeyDown = useCallback((e) => {
         if (e.key === 'Escape') {

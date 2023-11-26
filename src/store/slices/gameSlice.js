@@ -6,7 +6,8 @@ const initialState = {
     modalState: {
         isOpen: false,
         modalClass: '',
-        question: ''
+        question: '',
+        rowId: '',
     },
     filledQuestions: []
 };
