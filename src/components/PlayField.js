@@ -2,9 +2,28 @@ import { ThemeItem, QuestionItems } from './ThemeItem';
 import styles from '../styles/PlayField.module.css';
 import {useCallback, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
+import avatar1 from '../assets/pictures/1.jpg'
 
 const mainArr = ['q', 'w', 'e', 'r'];
 const questionArr = ['1', '2', '3', '4'];
+
+const playersArray = [
+    {
+        avatar: avatar1,
+        name: "Просто Андрей",
+        score: 3000
+    },
+    {
+        avatar: avatar1,
+        name: "Карпенко Андрей",
+        score: 2500
+    },
+    {
+        avatar: avatar1,
+        name: "Я настолько преисполнился в своем познании",
+        score: 10
+    }
+]
 
 export function PlayField() {
     const [isOpenProcess, setOpenProcess] = useState(false)
@@ -73,6 +92,20 @@ export function PlayField() {
             <table>
                 <tbody>{renderPlayThemes(gameState, combination)}</tbody>
             </table>
+
+            <div className={styles.scoreWrap}>
+                {playersArray.map((player, index) => {
+                    return (
+                        <div key={index} className={styles.scoreItem}>
+                            <img className={styles.imgScore} src={player.avatar} alt={player.name}/>
+                            <div className={styles.scoreContent}>
+                                <span className={styles.scoreText}>{player.name}</span>
+                                <span className={styles.scoreNumber}>{player.score}</span>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     );
 }

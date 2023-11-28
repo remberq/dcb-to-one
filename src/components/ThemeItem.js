@@ -46,7 +46,7 @@ export const QuestionItems = ({ question, combination, setOpenProcess }) => {
         if (e.key === 'Escape') {
             dispatch(setModalState({modalClass: 'close'}))
             setTimeout(() => {
-                dispatch(setModalState({isOpen: false, modalClass: '', question: ''}))
+                dispatch(setModalState({isOpen: false, modalClass: '', question: {}}))
             }, 1300);
         }
     }, [dispatch]);
