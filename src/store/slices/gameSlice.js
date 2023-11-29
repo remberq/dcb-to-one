@@ -1,15 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {themeInitialState} from "../../state/ThemesReducer";
+import {firstGameInitialState, playGameArray} from "../../state/ThemesReducer";
+
+const initialModalState = {
+    isOpen: false,
+    modalClass: '',
+    question: '',
+    rowId: '',
+    isClosedCatVideo: false,
+    sberCatClass: ''
+}
 
 const initialState = {
-    gameState: themeInitialState,
-    modalState: {
-        isOpen: false,
-        modalClass: '',
-        question: '',
-        rowId: '',
-    },
-    filledQuestions: []
+    gameState: firstGameInitialState,
+    modalState: initialModalState,
+    filledQuestions: [],
+    isFieldChanged: false
 };
 
 export const gameSlice = createSlice({
@@ -22,9 +27,14 @@ export const gameSlice = createSlice({
         setQuestionFill: (state, action) => {
             state.filledQuestions = [...state.filledQuestions, action.payload]
         },
+        changeGameState: (state, action) => {
+            state.gameState = playGameArray[action.payload]
+            state.filledQuestions = []
+            state.modalState = initialModalState
+        }
     },
 });
 
-export const { setModalState, setQuestionFill } = gameSlice.actions;
+export const { setModalState, setQuestionFill, changeGameState } = gameSlice.actions;
 
 export default gameSlice.reducer;

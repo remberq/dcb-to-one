@@ -136,9 +136,10 @@
 }
 
 .pic {
-    width: 840px;
-    height: 480px;
+    width: 100vw;
+    height: 100vh;
     border-radius: 10px;
+    object-fit: contain;
 }
 
 .videoPreview {
@@ -169,6 +170,8 @@
 }
 
 .video {
+    width: 100vw;
+    height: 100vh;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain;
 }

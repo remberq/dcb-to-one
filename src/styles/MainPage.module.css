@@ -46,3 +46,13 @@
     -webkit-animation: gra 13s infinite;
     background: linear-gradient(135deg, rgba(17,73,56,1) 0%, rgba(17,67,73,1) 14%, rgba(23,56,60,1) 27%, rgba(0,0,0,1) 88%, rgba(0,0,0,1) 100%);
 }
+
+.gameEnd {
+    color: #FFB13B;
+
+    text-align: start;
+    font-family: SB Sans Interface, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+}

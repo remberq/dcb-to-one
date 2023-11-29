@@ -1,15 +1,14 @@
 import style from '../styles/QuestionModal.module.css';
 import {useEffect, useState} from "react";
-import {themeInitialState} from "../state/ThemesReducer";
+import {firstGameInitialState} from "../state/ThemesReducer";
 
-export function QuestionModal({ isOpen, modalClass, question, rowId }) {
+export function QuestionModal({ isOpen, modalClass, question, rowId, isClosedCatVideo, sberCatClass }) {
     const [isShowVideo, setIsShowVideo] = useState(false)
     const [isVideoEnded, setVideoEnded] = useState(false)
     const pictureQuestion = question.picture
     const videoQuestion = question.video
-    const musicQuestion = question.music
-    const isAudioMuted = modalClass === 'close'
-    const headerContent = themeInitialState.find((item) => item.id === rowId)
+    const sberCatQuestion = question.sberCat
+    const headerContent = firstGameInitialState.find((item) => item.id === rowId)
 
     useEffect(() => {
         if (!!videoQuestion) {
@@ -32,6 +31,12 @@ export function QuestionModal({ isOpen, modalClass, question, rowId }) {
             video.classList.add(style.close)
             video.classList.remove(style.open)
         }
+
+        const sberVideo = document.getElementById('sberVideo')
+        if (sberVideo) {
+            sberVideo.classList.add(style.close)
+            sberVideo.classList.remove(style.open)
+        }
     }
 
     const handleVideoEnded = () => {
@@ -50,6 +55,28 @@ export function QuestionModal({ isOpen, modalClass, question, rowId }) {
         = () => {
         if (!!pictureQuestion) {
             return <div className={`${style.picWrapper} ${style[modalClass]}`}><img className={style.pic} src={pictureQuestion} alt={'pic'} /></div>
+        }
+
+        if (sberCatQuestion) {
+            if (isClosedCatVideo) {
+                return (
+                    <div className={`${style.content2} ${style[modalClass]}`}>
+                        <div className={style.header}>
+                            <span>{headerContent.theme}</span>
+                            <span>{question.cost}</span>
+                        </div>
+                        <div className={style.body}>
+                            {question.question}
+                        </div>
+                    </div>
+                )
+            }
+
+            return (
+                <video id="sberVideo" className={`${style.video} ${style[sberCatClass]}`} src={sberCatQuestion} autoPlay >
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            )
         }
 
         if (!!videoQuestion) {
@@ -103,12 +130,6 @@ export function QuestionModal({ isOpen, modalClass, question, rowId }) {
     return (
             <div className={modalClassName}>
                 {renderQuestion()}
-                {musicQuestion && (
-                    <audio controls={false} autoPlay muted={isAudioMuted}>
-                        <source src={musicQuestion} type="audio/mp3" />
-                            Your browser does not support the audio element.
-                    </audio>
-                )}
             </div>
     );
 }
