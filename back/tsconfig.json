@@ -1,0 +1,18 @@
+{
+    "include": ["src/**/*"],
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "outDir": "build/js",
+        "rootDir": "src",
+        "baseUrl": "src",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "paths": {
+            "@/*": ["*"],
+        }
+    },
+    "exclude": ["src/types/*.ts", "node_modules", ".vscode"],
+}
