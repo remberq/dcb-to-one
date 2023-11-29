@@ -8,9 +8,11 @@ export function ThemeItem({ theme, combination }) {
     const isSelectedRow = combination[0] === theme.id;
 
     const themeStyle = isSelectedRow ? styles.myDiv : '';
+    const themeTextSize = theme.theme.length > 24 ? { fontSize: '25px'} : {}
 
     return (
         <div
+            style={themeTextSize}
             className={`${styles.theme_item} ${themeStyle}`}
         >
             {theme.theme}
@@ -20,6 +22,7 @@ export function ThemeItem({ theme, combination }) {
 
 export const QuestionItems = ({ question, combination, setOpenProcess }) => {
     const dispatch = useDispatch()
+    const isClosedCatVideo = useSelector((state) => state.game.modalState.isClosedCatVideo)
     const fill = useSelector((state) => state.game.filledQuestions)
 
     const isFilledQuestion = fill.includes(question.id)
@@ -31,25 +34,35 @@ export const QuestionItems = ({ question, combination, setOpenProcess }) => {
     useEffect(() => {
         if (isSelectedRowQuestion && !isFilledQuestion) {
             setOpenProcess(true)
-            setTimeout(() => {
+            const timer = setTimeout(() => {
                 batch(() => {
                     dispatch(setModalState({isOpen: true, modalClass: 'open', question: question, rowId: combination[0]}))
                     dispatch(setQuestionFill(combination))
                     setOpenProcess(false)
                 })
             }, 2000);
-        }
 
+            return () => {
+                clearTimeout(timer)
+            }
+        }
     }, [combination, dispatch, isSelectedRowQuestion, question, isFilledQuestion, setOpenProcess]);
 
     const handleKeyDown = useCallback((e) => {
-        if (e.key === 'Escape') {
-            dispatch(setModalState({modalClass: 'close'}))
-            setTimeout(() => {
-                dispatch(setModalState({isOpen: false, modalClass: '', question: {}}))
-            }, 1300);
+        if (e.key === 'Escape' && combination === question.id) {
+            if (question.sberCat && !isClosedCatVideo) {
+                dispatch(setModalState({sberCatClass: 'close'}))
+                setTimeout(() => {
+                    dispatch(setModalState({isClosedCatVideo: true }))
+                }, 1300);
+            } else {
+                dispatch(setModalState({modalClass: 'close'}))
+                setTimeout(() => {
+                    dispatch(setModalState({isOpen: false, modalClass: '', question: {}}))
+                }, 1300);
+            }
         }
-    }, [dispatch]);
+    }, [combination, dispatch, isClosedCatVideo, question.id, question.sberCat]);
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);

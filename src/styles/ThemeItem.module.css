@@ -54,6 +54,7 @@
 
 .deactivated {
     min-width: 100px;
+    width: 133px;
     height: 66px;
     display: flex;
     justify-items: center;

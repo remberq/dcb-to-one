@@ -3,6 +3,7 @@ import styles from '../styles/PlayField.module.css';
 import {useCallback, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import avatar1 from '../assets/pictures/1.jpg'
+import defaultAvatar from '../assets/pictures/default.png'
 
 const mainArr = ['q', 'w', 'e', 'r'];
 const questionArr = ['1', '2', '3', '4'];
@@ -14,7 +15,6 @@ const playersArray = [
         score: 3000
     },
     {
-        avatar: avatar1,
         name: "Карпенко Андрей",
         score: 2500
     },
@@ -31,6 +31,13 @@ export function PlayField() {
     const isModalOpen = useSelector((state) => state.game.modalState.isOpen)
     const [combinationOne, setCombinationOne] = useState('');
     const [combinationTwo, setCombinationTwo] = useState('');
+    const isThemeChanged = localStorage.getItem('field')
+
+    useEffect(() => {
+        setCombinationOne('')
+        setCombinationTwo('')
+        setOpenProcess(false)
+    }, [isThemeChanged])
 
     const handleKeyDown = useCallback((e) => {
         if (e.repeat) return;
@@ -97,7 +104,7 @@ export function PlayField() {
                 {playersArray.map((player, index) => {
                     return (
                         <div key={index} className={styles.scoreItem}>
-                            <img className={styles.imgScore} src={player.avatar} alt={player.name}/>
+                            <img className={styles.imgScore} src={player.avatar ?? defaultAvatar} alt={player.name}/>
                             <div className={styles.scoreContent}>
                                 <span className={styles.scoreText}>{player.name}</span>
                                 <span className={styles.scoreNumber}>{player.score}</span>

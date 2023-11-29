@@ -1,7 +1,8 @@
 import picOne from '../assets/pictures/1.jpg'
 import video1 from '../assets/video/video1.MP4'
-import music1 from '../assets/music/sber.mp3'
-export const themeInitialState = [
+import sberCot from '../assets/video/RickRoll.mp4'
+
+export const firstGameInitialState = [
     {
         id: 'q',
         theme: 'Русский рэп',
@@ -28,7 +29,7 @@ export const themeInitialState = [
                 cost: 400,
                 question: 'В каком году умер гуф Тут будет вопрос картинкой Тут будет вопрос картинкой Тут будет вопрос картинкой',
                 active: true,
-                music: music1
+                sberCat: sberCot
             },
             {
                 id: 'q4',
@@ -142,6 +143,292 @@ export const themeInitialState = [
         ],
     },
 ];
+
+export const secondGameInitialState = [
+    {
+        id: 'q',
+        theme: 'Американский рэп',
+        questions: [
+            {
+                id: 'q1',
+                themeId: 'q',
+                cost: 100,
+                question: 'Почему закрыли версус',
+                active: true,
+                picture: picOne
+            },
+            {
+                id: 'q2',
+                themeId: 'q',
+                cost: 200,
+                question: 'В каком году умер гуф',
+                active: true,
+                video: video1
+            },
+            {
+                id: 'q3',
+                themeId: 'q',
+                cost: 400,
+                question: 'В каком году умер гуф Тут будет вопрос картинкой Тут будет вопрос картинкой Тут будет вопрос картинкой',
+                active: true,
+                sberCat: sberCot
+            },
+            {
+                id: 'q4',
+                themeId: 'q',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+    {
+        id: 'w',
+        theme: 'Дизайнеры девяностой волны',
+        questions: [
+            {
+                id: 'w1',
+                themeId: 'w',
+                cost: 100,
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
+            },
+            {
+                id: 'w2',
+                themeId: 'w',
+                cost: 200,
+                question: 'Тут будет вопрос картинкой',
+                active: true,
+            },
+            {
+                id: 'w3',
+                themeId: 'w',
+                cost: 400,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+            {
+                id: 'w4',
+                themeId: 'w',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+    {
+        id: 'e',
+        theme: 'Шутки про бэкэнд',
+        questions: [
+            {
+                id: 'e1',
+                themeId: 'e',
+                cost: 100,
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
+            },
+            {
+                id: 'e2',
+                themeId: 'e',
+                cost: 200,
+                question: 'Тут будет вопрос картинкой',
+                active: true,
+            },
+            {
+                id: 'e3',
+                themeId: 'e',
+                cost: 400,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+            {
+                id: 'e4',
+                themeId: 'e',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+    {
+        id: 'r',
+        theme: 'Монголы против ящеров',
+        questions: [
+            {
+                id: 'r1',
+                themeId: 'r',
+                cost: 100,
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
+            },
+            {
+                id: 'r2',
+                themeId: 'r',
+                cost: 200,
+                question: 'Тут будет вопрос картинкой ',
+                active: true,
+            },
+            {
+                id: 'r3',
+                themeId: 'r',
+                cost: 400,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+            {
+                id: 'r4',
+                themeId: 'r',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+];
+
+export const thirdGameInitialState = [
+    {
+        id: 'q',
+        theme: 'Кыштымский рэп',
+        questions: [
+            {
+                id: 'q1',
+                themeId: 'q',
+                cost: 100,
+                question: 'Почему закрыли версус',
+                active: true,
+                picture: picOne
+            },
+            {
+                id: 'q2',
+                themeId: 'q',
+                cost: 200,
+                question: 'В каком году умер гуф',
+                active: true,
+                video: video1
+            },
+            {
+                id: 'q3',
+                themeId: 'q',
+                cost: 400,
+                question: 'В каком году умер гуф Тут будет вопрос картинкой Тут будет вопрос картинкой Тут будет вопрос картинкой',
+                active: true,
+                sberCat: sberCot
+            },
+            {
+                id: 'q4',
+                themeId: 'q',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+    {
+        id: 'w',
+        theme: 'Девопсы третьей волны',
+        questions: [
+            {
+                id: 'w1',
+                themeId: 'w',
+                cost: 100,
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
+            },
+            {
+                id: 'w2',
+                themeId: 'w',
+                cost: 200,
+                question: 'Тут будет вопрос картинкой',
+                active: true,
+            },
+            {
+                id: 'w3',
+                themeId: 'w',
+                cost: 400,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+            {
+                id: 'w4',
+                themeId: 'w',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+    {
+        id: 'e',
+        theme: 'Стеб про фронтенд',
+        questions: [
+            {
+                id: 'e1',
+                themeId: 'e',
+                cost: 100,
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
+            },
+            {
+                id: 'e2',
+                themeId: 'e',
+                cost: 200,
+                question: 'Тут будет вопрос картинкой',
+                active: true,
+            },
+            {
+                id: 'e3',
+                themeId: 'e',
+                cost: 400,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+            {
+                id: 'e4',
+                themeId: 'e',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+    {
+        id: 'r',
+        theme: 'Гусары против ящеров',
+        questions: [
+            {
+                id: 'r1',
+                themeId: 'r',
+                cost: 100,
+                question: 'Почему дизайн закончился на упячке',
+                active: true,
+            },
+            {
+                id: 'r2',
+                themeId: 'r',
+                cost: 200,
+                question: 'Тут будет вопрос картинкой ',
+                active: true,
+            },
+            {
+                id: 'r3',
+                themeId: 'r',
+                cost: 400,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+            {
+                id: 'r4',
+                themeId: 'r',
+                cost: 1000,
+                question: 'В каком году умер гуф',
+                active: true,
+            },
+        ],
+    },
+];
+
+export const playGameArray = [firstGameInitialState, secondGameInitialState, thirdGameInitialState]
 //
 // export const themeReducer = (themes, action) => {
 //     switch (action.type) {
