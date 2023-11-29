@@ -1,0 +1,30 @@
+{
+  "name": "dcb-to-one-back",
+  "version": "0.0.1",
+  "description": "Для указания env параметров используется файл nodemon.json конфиг.",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "concurrently \"tsc -w\" \"nodemon build/js/app.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0",
+    "mongoose": "^7.3.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/debug": "^4.1.7",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.10.0",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.21",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.3"
+  }
+}
