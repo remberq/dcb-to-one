@@ -36,10 +36,6 @@ export const gameSlice = createSlice({
             state.players = allPlayers[action.payload]
         },
         changeScore: (state, action) => {
-            // const indexChangePlayer = state.players.indexOf((player) => player.id === action.payload.id)
-            // const test = [...state.players]
-            // test[indexChangePlayer].score += action.payload.score
-            // state.players = test
             state.players.splice(state.players.findIndex((el) => el.id === action.payload.id), 1, action.payload)
         }
     },
