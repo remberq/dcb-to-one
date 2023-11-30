@@ -1,14 +1,55 @@
 import style from '../styles/QuestionModal.module.css';
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {firstGameInitialState} from "../state/ThemesReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {changeScore} from "../store/slices/gameSlice";
+
+const playersCombinatiobArray = ['1', '2', '3']
+const answersCombinationArray = ['p', 'm', 'Backspace']
 
 export function QuestionModal({ isOpen, modalClass, question, rowId, isClosedCatVideo, sberCatClass }) {
+    const dispatch = useDispatch()
+    const players = useSelector((state) => state.game.players)
     const [isShowVideo, setIsShowVideo] = useState(false)
     const [isVideoEnded, setVideoEnded] = useState(false)
+    const [firstCombination, setFirstCombination] = useState('')
+    const [secondCombination, setSecondCombination] = useState('')
     const pictureQuestion = question.picture
     const videoQuestion = question.video
     const sberCatQuestion = question.sberCat
     const headerContent = firstGameInitialState.find((item) => item.id === rowId)
+
+    const handleChangeScore = useCallback((e) => {
+        if (isOpen) {
+            if (e.repeat) return;
+            if (playersCombinatiobArray.includes(e.key) && firstCombination !== e.key.toLowerCase()) {
+                setFirstCombination(e.key.toLowerCase())
+                setSecondCombination('')
+            }
+            if (answersCombinationArray.includes(e.key) && secondCombination !== e.key.toLowerCase() && firstCombination) {
+                setSecondCombination(e.key.toLowerCase())
+                const score = e.key.toLowerCase() === 'p' ? question.cost : e.key.toLowerCase() === 'm' ? -question.cost : 0
+                const payload = {...players.find((player) => player.id === +firstCombination)}
+                console.log(payload, 'pay')
+                payload.score += score
+                dispatch(changeScore(payload))
+            }
+
+            if (firstCombination === e.key.toLowerCase()) {
+                setFirstCombination('')
+                setSecondCombination('')
+            }
+        }
+    }, [dispatch, firstCombination, isOpen, players, question.cost, secondCombination])
+
+    console.log(firstCombination, secondCombination)
+    useEffect(() => {
+        document.addEventListener('keydown', handleChangeScore)
+
+        return () => {
+            document.removeEventListener('keydown', handleChangeScore)
+        }
+    }, [handleChangeScore]);
 
     useEffect(() => {
         if (!!videoQuestion) {
