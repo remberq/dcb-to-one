@@ -13,7 +13,7 @@ export function MainPage() {
     const combinationNextTheme = useRef([])
 
     useEffect(() => {
-        localStorage.setItem('field', '0')
+        localStorage.setItem('field', '1')
     }, [])
 
     const handleShiftDown = useCallback((e) => {
@@ -21,7 +21,7 @@ export function MainPage() {
             combinationNextTheme.current = [...combinationNextTheme.current, e.key]
             if (combinationNextTheme.current.length === 3) {
                 const indexOfQuestion = +localStorage.getItem('field') + 1
-                if (indexOfQuestion > 2) {
+                if (indexOfQuestion > 3) {
                     setGameEnded(true)
                     return;
                 }

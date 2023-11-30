@@ -1,5 +1,5 @@
 import {model, Schema} from 'mongoose'
-import {IScore} from "../types/score";
+import {IScore} from "@/types/score";
 
 /**
  * Схема модели таблицы очков.

@@ -2,15 +2,12 @@ import { ThemeItem, QuestionItems } from './ThemeItem';
 import styles from '../styles/PlayField.module.css';
 import {useCallback, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import avatar1 from '../assets/pictures/1.jpg'
-import defaultAvatar from '../assets/pictures/default.png'
 
 const mainArr = ['q', 'w', 'e', 'r'];
 const questionArr = ['1', '2', '3', '4'];
 
 const playersArray = [
     {
-        avatar: avatar1,
         name: "Просто Андрей",
         score: 3000
     },
@@ -19,7 +16,6 @@ const playersArray = [
         score: 2500
     },
     {
-        avatar: avatar1,
         name: "Я настолько преисполнился в своем познании",
         score: 10
     }
@@ -28,6 +24,7 @@ const playersArray = [
 export function PlayField() {
     const [isOpenProcess, setOpenProcess] = useState(false)
     const gameState = useSelector((state) => state.game.gameState)
+    const players = useSelector((state) => state.game.players)
     const isModalOpen = useSelector((state) => state.game.modalState.isOpen)
     const [combinationOne, setCombinationOne] = useState('');
     const [combinationTwo, setCombinationTwo] = useState('');
@@ -94,6 +91,7 @@ export function PlayField() {
             </tr>
         ));
     };
+
     return (
         <div>
             <table>
@@ -101,10 +99,10 @@ export function PlayField() {
             </table>
 
             <div className={styles.scoreWrap}>
-                {playersArray.map((player, index) => {
+                {players.map((player, index) => {
                     return (
                         <div key={index} className={styles.scoreItem}>
-                            <img className={styles.imgScore} src={player.avatar ?? defaultAvatar} alt={player.name}/>
+                            <img className={styles.imgScore} src={player.avatar} alt={player.name}/>
                             <div className={styles.scoreContent}>
                                 <span className={styles.scoreText}>{player.name}</span>
                                 <span className={styles.scoreNumber}>{player.score}</span>

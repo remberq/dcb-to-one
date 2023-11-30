@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {firstGameInitialState, playGameArray} from "../../state/ThemesReducer";
+import {firstGameInitialState, allGameTheme} from "../../state/ThemesReducer";
+import {allPlayers} from "../../state/playesState";
 
 const initialModalState = {
     isOpen: false,
@@ -7,14 +8,15 @@ const initialModalState = {
     question: '',
     rowId: '',
     isClosedCatVideo: false,
-    sberCatClass: ''
+    sberCatClass: '',
 }
 
 const initialState = {
-    gameState: firstGameInitialState,
+    gameState: allGameTheme[1],
     modalState: initialModalState,
     filledQuestions: [],
-    isFieldChanged: false
+    isFieldChanged: false,
+    players: allPlayers[1]
 };
 
 export const gameSlice = createSlice({
@@ -28,13 +30,21 @@ export const gameSlice = createSlice({
             state.filledQuestions = [...state.filledQuestions, action.payload]
         },
         changeGameState: (state, action) => {
-            state.gameState = playGameArray[action.payload]
+            state.gameState = allGameTheme[action.payload]
             state.filledQuestions = []
             state.modalState = initialModalState
+            state.players = allPlayers[action.payload]
+        },
+        changeScore: (state, action) => {
+            // const indexChangePlayer = state.players.indexOf((player) => player.id === action.payload.id)
+            // const test = [...state.players]
+            // test[indexChangePlayer].score += action.payload.score
+            // state.players = test
+            state.players.splice(state.players.findIndex((el) => el.id === action.payload.id), 1, action.payload)
         }
     },
 });
 
-export const { setModalState, setQuestionFill, changeGameState } = gameSlice.actions;
+export const { setModalState, setQuestionFill, changeGameState, changeScore } = gameSlice.actions;
 
 export default gameSlice.reducer;
