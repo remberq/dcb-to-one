@@ -1,5 +1,6 @@
 import picOne from '../assets/pictures/1.jpg'
 import sberCat from '../assets/video/sberCat.mp4'
+import videoQuestion from '../assets/video/RickRoll.mp4'
 
 export const firstGameInitialState = [
     {
@@ -35,6 +36,7 @@ export const firstGameInitialState = [
                 cost: 1000,
                 question: 'Какие пакеты услуг есть в СберБизнес?',
                 active: true,
+                video: videoQuestion
             },
         ],
     },
