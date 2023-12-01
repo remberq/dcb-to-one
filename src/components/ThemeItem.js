@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react'
+import { batch, useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/ThemeItem.module.css'
 
-import { batch, useDispatch, useSelector } from 'react-redux'
 import { setModalState, setQuestionFill } from '../store/slices/gameSlice'
 
 export function ThemeItem({ theme, combination }) {
@@ -17,7 +17,7 @@ export function ThemeItem({ theme, combination }) {
     )
 }
 
-export const QuestionItems = ({ question, combination, setOpenProcess }) => {
+export function QuestionItems({ question, combination, setOpenProcess }) {
     const dispatch = useDispatch()
     const isClosedCatVideo = useSelector((state) => state.game.modalState.isClosedCatVideo)
     const fill = useSelector((state) => state.game.filledQuestions)
@@ -79,7 +79,7 @@ export const QuestionItems = ({ question, combination, setOpenProcess }) => {
 
     return (
         <div className={!isFilledQuestion ? questionStyle : styles.deactivated}>
-            {!isFilledQuestion ? <label>{question.cost}</label> : <label></label>}
+            {!isFilledQuestion ? <label>{question.cost}</label> : <label />}
         </div>
     )
 }

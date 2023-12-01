@@ -1,5 +1,5 @@
-import { getScore } from "../controllers/score";
-import { Router } from "express";
+import { getScore } from '../controllers/score'
+import { Router } from 'express'
 
 const router: Router = Router()
 

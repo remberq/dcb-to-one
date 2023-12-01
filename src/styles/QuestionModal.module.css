@@ -38,7 +38,7 @@
     }
 }
 
-.Modal{
+.Modal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,11 +59,11 @@
 .content2 {
     width: 840px;
     height: 480px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 10px;
 }
 
-.content{
+.content {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -71,7 +71,7 @@
     align-items: center;
     background: rgb(16, 127, 140);
     background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     width: 840px;
@@ -86,11 +86,13 @@
     height: 80px;
     flex-shrink: 0;
     border-radius: 8px 8px 0px 0px;
-    background: linear-gradient(90deg, #005E7F 0%, #107F8C 103.67%);
-    color: #FFF;
+    background: linear-gradient(90deg, #005e7f 0%, #107f8c 103.67%);
+    color: #fff;
 
     text-align: center;
-    font-family: SB Sans Interface, sans-serif;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 21px;
     font-style: normal;
     font-weight: 400;
@@ -106,8 +108,10 @@
     justify-content: center;
     vertical-align: middle;
     align-items: center;
-    color: #1F1F22;
-    font-family: SB Sans Interface, sans-serif;
+    color: #1f1f22;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 30px;
     font-style: normal;
     font-weight: 600;
@@ -122,12 +126,11 @@
     animation: 1.3s fadeOut ease;
 }
 
-.ModalEnter{
+.ModalEnter {
     opacity: 0;
 }
 
-
-.ModalEnterDone{
+.ModalEnterDone {
     opacity: 1;
 }
 
@@ -150,7 +153,7 @@
     align-items: center;
     background: rgb(16, 127, 140);
     background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
-    color: #FFFFFF;
+    color: #ffffff;
     border-radius: 10px;
     width: 90vw;
     height: 90vh;
@@ -166,7 +169,7 @@
     border-radius: 10px;
     background: rgb(16, 127, 140);
     background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .video {

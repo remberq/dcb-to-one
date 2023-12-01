@@ -1,4 +1,4 @@
-.row{
+.row {
     border-bottom: 10px dashed black;
 }
 
@@ -17,11 +17,10 @@
     gap: 16px;
     flex: 1 0 0;
     border-radius: 8px;
-    border: 1px solid #565B62;
+    border: 1px solid #565b62;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; /* Добавляем многоточие */
-
 }
 
 .imgScore {
@@ -43,22 +42,25 @@
 }
 
 .scoreText {
-    color: #F2F4F7;
+    color: #f2f4f7;
     text-align: start;
-    font-family: SB Sans Interface, sans-serif;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis; /* Добавляем многоточие */
-
 }
 
 .scoreNumber {
-    color: #FFB13B;
+    color: #ffb13b;
 
     text-align: start;
-    font-family: SB Sans Interface, sans-serif;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 30px;
     font-style: normal;
     font-weight: 600;

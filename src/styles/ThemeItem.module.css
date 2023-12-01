@@ -4,7 +4,9 @@
     background-color: #e5fcf7;
     margin: 10px;
     border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
     display: flex;
     width: 133px;
@@ -15,15 +17,16 @@
     flex-shrink: 0;
     height: 66px;
 
-    color: #1F1F22;
+    color: #1f1f22;
 
     text-align: center;
-    font-family: SB Sans Interface, sans-serif;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 30px;
     font-style: normal;
     font-weight: 600;
     line-height: 40px;
-
 }
 
 .theme_item {
@@ -34,10 +37,12 @@
     justify-items: center;
     align-items: center;
     /*background: rgb(16, 127, 140);*/
-    background: linear-gradient(90deg, #005E7F 0%, #107F8C 103.67%);
-    color: #FFF;
+    background: linear-gradient(90deg, #005e7f 0%, #107f8c 103.67%);
+    color: #fff;
     text-align: center;
-    font-family: SB Sans Interface, sans-serif;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 30px;
     font-style: normal;
     font-weight: 600;
@@ -45,11 +50,13 @@
     padding: 20px;
     margin: 10px;
     border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .active_row {
-    outline: 1px solid wheat
+    outline: 1px solid wheat;
 }
 
 .deactivated {
@@ -59,21 +66,19 @@
     display: flex;
     justify-items: center;
     align-items: center;
-    background-color: rgba(86, 91, 98, 0.50);;
-    color: #565B62;
+    background-color: rgba(86, 91, 98, 0.5);
+    color: #565b62;
     margin: 10px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
-
-
 
 @keyframes clippath {
     0%,
     100% {
         clip-path: inset(0 0 98% 0);
     }
-    
+
     25% {
         clip-path: inset(0 98% 0 0);
     }
@@ -84,11 +89,11 @@
         clip-path: inset(0 0 0 98%);
     }
 }
-  
+
 .myDiv {
     position: relative;
     text-align: center;
-    transition: all .3s;
+    transition: all 0.3s;
     cursor: pointer;
 
     min-width: 100px;
@@ -99,7 +104,9 @@
     padding: 20px;
     margin: 10px;
     border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
     &:hover {
         filter: contrast(1.1);
@@ -111,14 +118,14 @@
 
     &::before,
     &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: -5px;
         left: -5px;
         right: -5px;
         bottom: -5px;
         border: 1px solid #e5fcf7;
-        transition: all .5s;
+        transition: all 0.5s;
         animation: clippath 3s infinite linear;
         border-radius: 10px;
     }
@@ -129,46 +136,51 @@
 }
 
 @keyframes NAME-YOUR-ANIMATION {
-    0%, 12% {
-        background: #FFB13B;
-        color: #FFF;
+    0%,
+    12% {
+        background: #ffb13b;
+        color: #fff;
     }
-    13%, 25% {
-        background: #FFF;
-        color: #1F1F22;
-
+    13%,
+    25% {
+        background: #fff;
+        color: #1f1f22;
     }
-    26%, 37% {
-        background: #FFB13B;
-        color: #FFF;
+    26%,
+    37% {
+        background: #ffb13b;
+        color: #fff;
     }
-    38%, 50% {
-        background: #FFF;
-        color: #1F1F22;
+    38%,
+    50% {
+        background: #fff;
+        color: #1f1f22;
     }
-    51%, 63% {
-        background: #FFB13B;
-        color: #FFF;
+    51%,
+    63% {
+        background: #ffb13b;
+        color: #fff;
     }
-    64%, 75% {
-        background: #FFF;
-        color: #1F1F22;
-
+    64%,
+    75% {
+        background: #fff;
+        color: #1f1f22;
     }
-    76%, 87% {
-        background: #FFB13B;
-        color: #FFF;
+    76%,
+    87% {
+        background: #ffb13b;
+        color: #fff;
     }
-    88%, 100% {
-        background: #FFF;
-        color: #1F1F22;
-
+    88%,
+    100% {
+        background: #fff;
+        color: #1f1f22;
     }
 }
 
 .question_animation {
     position: relative;
-    transition: all .3s;
+    transition: all 0.3s;
     cursor: pointer;
     min-width: 100px;
     justify-items: center;
@@ -176,7 +188,9 @@
     background: linear-gradient(35deg, rgba(16, 127, 140, 1) 0%, rgba(33, 161, 154, 1) 100%);
     margin: 10px;
     border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     animation: NAME-YOUR-ANIMATION 2s infinite;
     animation-timing-function: linear;
     display: flex;
@@ -187,10 +201,12 @@
     gap: 10px;
     flex-shrink: 0;
 
-    color: #1F1F22;
+    color: #1f1f22;
 
     text-align: center;
-    font-family: SB Sans Interface, sans-serif;
+    font-family:
+        SB Sans Interface,
+        sans-serif;
     font-size: 30px;
     font-style: normal;
     font-weight: 600;
@@ -199,14 +215,14 @@
     &:hover {
         filter: contrast(1.1);
     }
-    
+
     &:active {
         filter: contrast(0.9);
     }
-    
+
     &::before,
     &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: -5px;
         left: -5px;
@@ -217,7 +233,7 @@
         animation: clippath 1.5s infinite linear;
         border-radius: 10px;
     }
-    
+
     &::after {
         animation: clippath 1.5s infinite -1.5s linear;
     }

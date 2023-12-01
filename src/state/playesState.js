@@ -12,20 +12,20 @@ const firstGamePlayers = [
     {
         id: 1,
         avatar: sergey,
-        name: "Сергей Канаев",
-        score: 0
+        name: 'Сергей Канаев',
+        score: 0,
     },
     {
         id: 2,
         avatar: nikita,
-        name: "Никита Аникин",
-        score: 0
+        name: 'Никита Аникин',
+        score: 0,
     },
     {
         id: 3,
         avatar: julia,
-        name: "Юлия Охрименко",
-        score: 0
+        name: 'Юлия Охрименко',
+        score: 0,
     },
 ]
 
@@ -33,20 +33,20 @@ const secondGamePlayers = [
     {
         id: 1,
         avatar: ali,
-        name: "Али Мамедов",
-        score: 0
+        name: 'Али Мамедов',
+        score: 0,
     },
     {
         id: 2,
         avatar: daria,
-        name: "Дарья Толстова",
-        score: 0
+        name: 'Дарья Толстова',
+        score: 0,
     },
     {
         id: 3,
         avatar: dmitriy,
-        name: "Дмитрий Самошин",
-        score: 0
+        name: 'Дмитрий Самошин',
+        score: 0,
     },
 ]
 
@@ -54,25 +54,25 @@ const thirdGamePlayers = [
     {
         id: 1,
         avatar: slava,
-        name: "Вячеслав Фролов",
-        score: 0
+        name: 'Вячеслав Фролов',
+        score: 0,
     },
     {
         id: 2,
         avatar: katya,
-        name: "Екатерина Смурова",
-        score: 0
+        name: 'Екатерина Смурова',
+        score: 0,
     },
     {
         id: 3,
         avatar: andrey,
-        name: "Андрей Аристархов",
-        score: 0
+        name: 'Андрей Аристархов',
+        score: 0,
     },
 ]
 
 export const allPlayers = {
-    "1": firstGamePlayers,
-    "2": secondGamePlayers,
-    "3": thirdGamePlayers
+    1: firstGamePlayers,
+    2: secondGamePlayers,
+    3: thirdGamePlayers,
 }
