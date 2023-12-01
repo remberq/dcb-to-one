@@ -11,8 +11,8 @@
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true,
         "paths": {
-            "@/*": ["*"],
+            "@/*": ["*"]
         }
     },
-    "exclude": ["src/types/*.ts", "node_modules", ".vscode"],
+    "exclude": ["src/types/*.ts", "node_modules", ".vscode"]
 }

@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {firstGameInitialState, allGameTheme} from "../../state/ThemesReducer";
-import {allPlayers} from "../../state/playesState";
+import { createSlice } from '@reduxjs/toolkit'
+import { allGameTheme } from '../../state/ThemesReducer'
+import { allPlayers } from '../../state/playesState'
 
 const initialModalState = {
     isOpen: false,
@@ -16,15 +16,15 @@ const initialState = {
     modalState: initialModalState,
     filledQuestions: [],
     isFieldChanged: false,
-    players: allPlayers[1]
-};
+    players: allPlayers[1],
+}
 
 export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
         setModalState: (state, action) => {
-            state.modalState = {...state.modalState, ...action.payload}
+            state.modalState = { ...state.modalState, ...action.payload }
         },
         setQuestionFill: (state, action) => {
             state.filledQuestions = [...state.filledQuestions, action.payload]
@@ -36,11 +36,15 @@ export const gameSlice = createSlice({
             state.players = allPlayers[action.payload]
         },
         changeScore: (state, action) => {
-            state.players.splice(state.players.findIndex((el) => el.id === action.payload.id), 1, action.payload)
-        }
+            state.players.splice(
+                state.players.findIndex((el) => el.id === action.payload.id),
+                1,
+                action.payload
+            )
+        },
     },
-});
+})
 
-export const { setModalState, setQuestionFill, changeGameState, changeScore } = gameSlice.actions;
+export const { setModalState, setQuestionFill, changeGameState, changeScore } = gameSlice.actions
 
-export default gameSlice.reducer;
+export default gameSlice.reducer

@@ -3,8 +3,8 @@
  * @prop gameScore Счет игры по игрокам.
  */
 export interface IUser {
-    name: string;
-    score: number;
+    name: string
+    score: number
 }
 
 /**
@@ -15,10 +15,10 @@ export interface IUser {
  * @prop user3 Данные игрока 3.
  */
 export interface IScore {
-    gameId: string;
-    user1: IUser;
-    user2: IUser;
-    user3: IUser;
+    gameId: string
+    user1: IUser
+    user2: IUser
+    user3: IUser
 }
 
 /**

@@ -73,7 +73,7 @@ export function QuestionModal({
     }, [handleChangeScore])
 
     useEffect(() => {
-        if (!!videoQuestion) {
+        if (videoQuestion) {
             setTimeout(() => {
                 setIsShowVideo(true)
             }, 3200)
@@ -112,7 +112,7 @@ export function QuestionModal({
         modalClass === 'close' ? `${style.Modal} ${style.closeModal}` : style.Modal
 
     const renderQuestion = () => {
-        if (!!pictureQuestion) {
+        if (pictureQuestion) {
             return (
                 <div className={`${style.picWrapper} ${style[modalClass]}`}>
                     <img className={style.pic} src={pictureQuestion} alt={'pic'} />
@@ -140,12 +140,12 @@ export function QuestionModal({
                     src={sberCatQuestion}
                     autoPlay
                 >
-                    Sorry, your browser doesn't support embedded videos.
+                    Sorry, your browser doesnt support embedded videos.
                 </video>
             )
         }
 
-        if (!!videoQuestion) {
+        if (videoQuestion) {
             if (isVideoEnded) {
                 return (
                     <div className={`${style.content2} ${style[modalClass]}`}>
@@ -167,7 +167,7 @@ export function QuestionModal({
                         src={videoQuestion}
                         autoPlay
                     >
-                        Sorry, your browser doesn't support embedded videos.
+                        Sorry, your browser doesnt support embedded videos.
                     </video>
                 )
             }
