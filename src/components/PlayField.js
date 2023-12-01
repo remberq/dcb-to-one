@@ -1,33 +1,18 @@
-import { ThemeItem, QuestionItems } from './ThemeItem';
-import styles from '../styles/PlayField.module.css';
-import {useCallback, useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
+import { ThemeItem, QuestionItems } from './ThemeItem'
+import styles from '../styles/PlayField.module.css'
+import { useCallback, useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-const mainArr = ['q', 'w', 'e', 'r'];
-const questionArr = ['1', '2', '3', '4'];
-
-const playersArray = [
-    {
-        name: "Просто Андрей",
-        score: 3000
-    },
-    {
-        name: "Карпенко Андрей",
-        score: 2500
-    },
-    {
-        name: "Я настолько преисполнился в своем познании",
-        score: 10
-    }
-]
+const mainArr = ['q', 'w', 'e', 'r']
+const questionArr = ['1', '2', '3', '4', '5']
 
 export function PlayField() {
     const [isOpenProcess, setOpenProcess] = useState(false)
     const gameState = useSelector((state) => state.game.gameState)
     const players = useSelector((state) => state.game.players)
     const isModalOpen = useSelector((state) => state.game.modalState.isOpen)
-    const [combinationOne, setCombinationOne] = useState('');
-    const [combinationTwo, setCombinationTwo] = useState('');
+    const [combinationOne, setCombinationOne] = useState('')
+    const [combinationTwo, setCombinationTwo] = useState('')
     const isThemeChanged = localStorage.getItem('field')
 
     useEffect(() => {
@@ -36,41 +21,44 @@ export function PlayField() {
         setOpenProcess(false)
     }, [isThemeChanged])
 
-    const handleKeyDown = useCallback((e) => {
-        if (e.repeat) return;
-        if (!isModalOpen && !isOpenProcess) {
-            if (
-                mainArr.includes(e.key.toLowerCase()) &&
-                combinationOne !== e.key.toLowerCase()
-            ) {
-                setCombinationOne(e.key.toLowerCase());
-                setCombinationTwo('');
-            }
-            if (
-                questionArr.includes(e.key.toLowerCase()) &&
-                combinationTwo !== e.key.toLowerCase()
-            ) {
-                setCombinationTwo(e.key.toLowerCase());
-            }
+    const handleKeyDown = useCallback(
+        (e) => {
+            if (e.repeat) return
+            if (!isModalOpen && !isOpenProcess) {
+                if (
+                    mainArr.includes(e.key.toLowerCase()) &&
+                    combinationOne !== e.key.toLowerCase()
+                ) {
+                    setCombinationOne(e.key.toLowerCase())
+                    setCombinationTwo('')
+                }
+                if (
+                    questionArr.includes(e.key.toLowerCase()) &&
+                    combinationTwo !== e.key.toLowerCase()
+                ) {
+                    setCombinationTwo(e.key.toLowerCase())
+                }
 
-            if (combinationOne === e.key.toLowerCase()) {
-                setCombinationOne('');
+                if (combinationOne === e.key.toLowerCase()) {
+                    setCombinationOne('')
+                }
+                if (combinationTwo === e.key.toLowerCase()) {
+                    setCombinationTwo('')
+                }
             }
-            if (combinationTwo === e.key.toLowerCase()) {
-                setCombinationTwo('');
-            }
-        }
-    }, [combinationOne, combinationTwo, isModalOpen, isOpenProcess]);
+        },
+        [combinationOne, combinationTwo, isModalOpen, isOpenProcess]
+    )
 
     useEffect(() => {
-        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keydown', handleKeyDown)
 
         return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [handleKeyDown]);
+            document.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [handleKeyDown])
 
-    const combination = combinationOne + combinationTwo;
+    const combination = combinationOne + combinationTwo
 
     const renderPlayThemes = (themes, combination) => {
         return themes.map((theme) => (
@@ -89,8 +77,8 @@ export function PlayField() {
                     </td>
                 ))}
             </tr>
-        ));
-    };
+        ))
+    }
 
     return (
         <div>
@@ -102,7 +90,11 @@ export function PlayField() {
                 {players.map((player, index) => {
                     return (
                         <div key={index} className={styles.scoreItem}>
-                            <img className={styles.imgScore} src={player.avatar} alt={player.name}/>
+                            <img
+                                className={styles.imgScore}
+                                src={player.avatar}
+                                alt={player.name}
+                            />
                             <div className={styles.scoreContent}>
                                 <span className={styles.scoreText}>{player.name}</span>
                                 <span className={styles.scoreNumber}>{player.score}</span>
@@ -112,5 +104,5 @@ export function PlayField() {
                 })}
             </div>
         </div>
-    );
+    )
 }
