@@ -73,3 +73,10 @@
     font-style: normal;
     font-weight: 600;
 }
+
+.video {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 10px;
+    object-fit: contain;
+}

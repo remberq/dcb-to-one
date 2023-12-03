@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { allGameTheme } from '../../state/ThemesReducer'
+import { allGameTheme } from '../../state/themesState'
 import { allPlayers } from '../../state/playesState'
 
 const initialModalState = {

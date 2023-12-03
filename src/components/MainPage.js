@@ -4,19 +4,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { QuestionModal } from './QuestionModal'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { changeGameState } from '../store/slices/gameSlice'
+import style from '../styles/QuestionModal.module.css'
+import finalQuestion from '../assets/cat/END-Loevskaya/Лоевская_вопрос.mp4'
+import finalAnswerQuestion from '../assets/cat/END-Loevskaya/Лоевская_ответ.mp4'
 
 export function MainPage() {
+    const [videoType, setVideoType] = useState('question')
     const [isGameEnded, setGameEnded] = useState(false)
     const dispatch = useDispatch()
     const modal = useSelector((state) => state.game.modalState)
     const combinationNextTheme = useRef([])
-
+    const videos = {
+        question: finalQuestion,
+        answer: finalAnswerQuestion,
+    }
     useEffect(() => {
         localStorage.setItem('field', '1')
     }, [])
 
-    const handleShiftDown = useCallback(
+    const handleKeyDown = useCallback(
         (e) => {
+            if (e.repeat) return
             if (e.key === 'Shift') {
                 combinationNextTheme.current = [...combinationNextTheme.current, e.key]
                 if (combinationNextTheme.current.length === 3) {
@@ -30,22 +38,35 @@ export function MainPage() {
                     combinationNextTheme.current = []
                 }
             }
+            if (e.key.toLowerCase() === 'a') {
+                setVideoType('answer')
+            }
         },
-        [dispatch]
+        [dispatch, videoType]
     )
 
     useEffect(() => {
-        document.addEventListener('keydown', handleShiftDown)
-    }, [handleShiftDown])
+        document.addEventListener('keydown', handleKeyDown)
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown)
+        }
+    }, [handleKeyDown])
 
     return (
         <>
             <div className={styles.inner}>
-                {isGameEnded ? <div className={styles.gameEnd}>Thank for Game</div> : <PlayField />}
+                {isGameEnded ? (
+                    <video autoPlay className={`${style.video}`} src={videos[videoType]}>
+                        Sorry, your browser doesnt support embedded videos.
+                    </video>
+                ) : (
+                    <PlayField />
+                )}
 
                 <div className={styles.animation}></div>
             </div>
-            <QuestionModal {...modal} />
+            {modal.isOpen && <QuestionModal {...modal} />}
         </>
     )
 }
