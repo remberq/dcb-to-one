@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { QuestionModal } from './QuestionModal'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { changeGameState } from '../store/slices/gameSlice'
-import style from '../styles/QuestionModal.module.css'
-import finalQuestion from '../assets/cat/END-Loevskaya/Лоевская_вопрос.mp4'
-import finalAnswerQuestion from '../assets/cat/END-Loevskaya/Лоевская_ответ.mp4'
+
+import { FinalGame } from './FinalGame'
 
 export function MainPage() {
     const [videoType, setVideoType] = useState('question')
@@ -14,10 +13,7 @@ export function MainPage() {
     const dispatch = useDispatch()
     const modal = useSelector((state) => state.game.modalState)
     const combinationNextTheme = useRef([])
-    const videos = {
-        question: finalQuestion,
-        answer: finalAnswerQuestion,
-    }
+
     useEffect(() => {
         localStorage.setItem('field', '1')
     }, [])
@@ -61,18 +57,7 @@ export function MainPage() {
     return (
         <>
             <div className={styles.inner}>
-                {isGameEnded ? (
-                    <video
-                        id="lastVideo"
-                        autoPlay
-                        className={`${style.video}`}
-                        src={videos[videoType]}
-                    >
-                        Sorry, your browser doesnt support embedded videos.
-                    </video>
-                ) : (
-                    <PlayField />
-                )}
+                {isGameEnded ? <FinalGame videoType={videoType} /> : <PlayField />}
 
                 <div className={styles.animation}></div>
             </div>
