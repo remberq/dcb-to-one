@@ -153,13 +153,6 @@ export function QuestionModal({
                     >
                         Sorry, your browser doesnt support embedded videos.
                     </video>
-                    // <div className={`${style.content2} ${style[modalClass]}`}>
-                    //     <div className={style.header}>
-                    //         <span>{headerContent.theme}</span>
-                    //         <span>{question.cost}</span>
-                    //     </div>
-                    //     <div className={style.body}>{question.question}</div>
-                    // </div>
                 )
             }
 
@@ -219,7 +212,13 @@ export function QuestionModal({
                     <span>{headerContent.theme}</span>
                     <span>{question.cost}</span>
                 </div>
-                <div className={style.body}>{question.question}</div>
+                <div className={style.body}>
+                    {question.question}
+                    <span className={style.author}>
+                        Автор вопроса:
+                        <span className={style.authorName}> {question.author}</span>
+                    </span>
+                </div>
             </div>
         )
     }
