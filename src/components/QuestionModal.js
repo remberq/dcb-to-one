@@ -1,8 +1,9 @@
 import style from '../styles/QuestionModal.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { firstGameInitialState } from '../state/ThemesReducer'
+import { firstGameInitialState } from '../state/themesState'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeScore } from '../store/slices/gameSlice'
+import sberCat from '../assets/video/sberCat.mp4'
 
 const playersCombinatiobArray = ['1', '2', '3']
 const answersCombinationArray = ['p', 'm', 'Backspace']
@@ -15,6 +16,7 @@ export function QuestionModal({
     isClosedCatVideo,
     sberCatClass,
 }) {
+    const [videoType, setVideoType] = useState('q')
     const dispatch = useDispatch()
     const players = useSelector((state) => state.game.players)
     const [isShowVideo, setIsShowVideo] = useState(false)
@@ -24,6 +26,14 @@ export function QuestionModal({
     const pictureQuestion = question.picture
     const videoQuestion = question.video
     const sberCatQuestion = question.sberCat
+    const rightAnswer = question.trueAnswerVideo
+    const wrongAnswer = question.wrongAnswerVideo
+
+    const sberCatVideoMap = {
+        q: sberCatQuestion,
+        p: rightAnswer,
+        m: wrongAnswer,
+    }
     const headerContent = firstGameInitialState.find((item) => item.id === rowId)
 
     const handleChangeScore = useCallback(
@@ -43,14 +53,19 @@ export function QuestionModal({
                     firstCombination
                 ) {
                     setSecondCombination(e.key.toLowerCase())
+                    setVideoType(e.key.toLowerCase())
+                    const video = document.getElementById('answers')
+                    if (video) {
+                        video.load()
+                    }
                     const score =
                         e.key.toLowerCase() === 'p'
                             ? question.cost
                             : e.key.toLowerCase() === 'm'
                               ? -question.cost
                               : 0
+
                     const payload = { ...players.find((player) => player.id === +firstCombination) }
-                    console.log(payload, 'pay')
                     payload.score += score
                     dispatch(changeScore(payload))
                 }
@@ -58,6 +73,13 @@ export function QuestionModal({
                 if (firstCombination === e.key.toLowerCase()) {
                     setFirstCombination('')
                     setSecondCombination('')
+                }
+
+                if (secondCombination === e.key.toLowerCase() && !!sberCatQuestion) {
+                    const video = document.getElementById('answers')
+                    if (video) {
+                        video.load()
+                    }
                 }
             }
         },
@@ -123,13 +145,21 @@ export function QuestionModal({
         if (sberCatQuestion) {
             if (isClosedCatVideo) {
                 return (
-                    <div className={`${style.content2} ${style[modalClass]}`}>
-                        <div className={style.header}>
-                            <span>{headerContent.theme}</span>
-                            <span>{question.cost}</span>
-                        </div>
-                        <div className={style.body}>{question.question}</div>
-                    </div>
+                    <video
+                        id="answers"
+                        className={`${style.video}`}
+                        src={sberCatVideoMap[videoType]}
+                        autoPlay
+                    >
+                        Sorry, your browser doesnt support embedded videos.
+                    </video>
+                    // <div className={`${style.content2} ${style[modalClass]}`}>
+                    //     <div className={style.header}>
+                    //         <span>{headerContent.theme}</span>
+                    //         <span>{question.cost}</span>
+                    //     </div>
+                    //     <div className={style.body}>{question.question}</div>
+                    // </div>
                 )
             }
 
@@ -137,7 +167,7 @@ export function QuestionModal({
                 <video
                     id="sberVideo"
                     className={`${style.video} ${style[sberCatClass]}`}
-                    src={sberCatQuestion}
+                    src={sberCat}
                     autoPlay
                 >
                     Sorry, your browser doesnt support embedded videos.
