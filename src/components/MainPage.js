@@ -41,6 +41,11 @@ export function MainPage() {
             if (e.key.toLowerCase() === 'a') {
                 setVideoType('answer')
             }
+
+            if (e.key === 'Enter') {
+                const video = document.getElementById('lastVideo')
+                video && video.play()
+            }
         },
         [dispatch, videoType]
     )
@@ -57,7 +62,12 @@ export function MainPage() {
         <>
             <div className={styles.inner}>
                 {isGameEnded ? (
-                    <video autoPlay className={`${style.video}`} src={videos[videoType]}>
+                    <video
+                        id="lastVideo"
+                        autoPlay
+                        className={`${style.video}`}
+                        src={videos[videoType]}
+                    >
                         Sorry, your browser doesnt support embedded videos.
                     </video>
                 ) : (
