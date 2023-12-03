@@ -214,10 +214,12 @@ export function QuestionModal({
                 </div>
                 <div className={style.body}>
                     {question.question}
-                    <span className={style.author}>
-                        Автор вопроса:
-                        <span className={style.authorName}> {question.author}</span>
-                    </span>
+                    {question.author && (
+                        <span className={style.author}>
+                            Автор вопроса:
+                            <span className={style.authorName}> {question.author}</span>
+                        </span>
+                    )}
                 </div>
             </div>
         )
