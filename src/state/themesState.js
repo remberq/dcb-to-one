@@ -22,7 +22,7 @@ export const firstGameInitialState = [
                 cost: 100,
                 question: 'Какое традиционное мероприятие от лидера трайба завершает год?',
                 active: true,
-                author: 'Мария Мартынюк.',
+                author: 'Мария Мартынюк',
             },
             {
                 id: 'q2',
@@ -31,7 +31,7 @@ export const firstGameInitialState = [
                 question:
                     'В каких двух основных городах размещаются площадки службы техподдержки ДБО ЦКР? ',
                 active: true,
-                author: 'Анна Сергеева.',
+                author: 'Анна Сергеева',
             },
             {
                 id: 'q3',
@@ -49,7 +49,7 @@ export const firstGameInitialState = [
                 cost: 1000,
                 question: 'Что такое ДБПНУ? ',
                 active: true,
-                author: 'Виталий Судариков.',
+                author: 'Виталий Судариков',
             },
             {
                 id: 'q5',
@@ -57,7 +57,7 @@ export const firstGameInitialState = [
                 cost: 1500,
                 question: 'Сколько полных лет шла миграция СберБизнес?',
                 active: true,
-                author: 'Владислав Губерник.',
+                author: 'Владислав Губерник',
             },
         ],
     },
@@ -346,7 +346,7 @@ export const secondGameInitialState = [
                 question:
                     'На каком этаже сотрудники трайба ЦКБ были изначально размещены после переезда на К32?',
                 active: true,
-                author: 'Анна Сергеева.',
+                author: 'Анна Сергеева',
             },
             {
                 id: 'r2',
@@ -354,7 +354,7 @@ export const secondGameInitialState = [
                 cost: 300,
                 question: 'Что такое ЗоСУ?',
                 active: true,
-                author: 'Виталий Судариков.',
+                author: 'Виталий Судариков',
             },
             {
                 id: 'r3',
@@ -371,7 +371,7 @@ export const secondGameInitialState = [
                 question:
                     'Подключение к фабрикам ДЦКБ связано с добавлением SAN в белый список. Что такое SAN?',
                 active: true,
-                author: 'Мария Мартынюк.',
+                author: 'Мария Мартынюк',
             },
             {
                 id: 'r5',
@@ -494,7 +494,7 @@ export const thirdGameInitialState = [
                 cost: 100,
                 question: 'Какие деревья были посажены на аллее DCB в 2023 году?',
                 active: true,
-                author: 'Екатерина Канаева.',
+                author: 'Екатерина Канаева',
             },
             {
                 id: 'e2',
@@ -502,7 +502,7 @@ export const thirdGameInitialState = [
                 cost: 300,
                 question: 'Какие пакеты услуг есть в СберБизнес?',
                 active: true,
-                author: 'Станислав Панфилов.',
+                author: 'Станислав Панфилов',
             },
             {
                 id: 'e3',
@@ -524,7 +524,7 @@ export const thirdGameInitialState = [
                 cost: 1500,
                 question: 'Что такое ЗоВИ?',
                 active: true,
-                author: 'Виталий Судариков.',
+                author: 'Виталий Судариков',
             },
         ],
     },
