@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 export const FinalGame = ({ videoType }) => {
     const [isOpenVideo, setOpenVideo] = useState(false)
+    const [isShowLastSlide, setIsShowLastSLide] = useState(false)
     const [isActive, setIsActive] = useState(false)
     const videos = {
         question: finalQuestion,
@@ -21,6 +22,10 @@ export const FinalGame = ({ videoType }) => {
                 setOpenVideo(true)
             }, 2000)
         }
+
+        if (e.key === 'Escape') {
+            setIsShowLastSLide(true)
+        }
     }, [])
 
     useEffect(() => {
@@ -32,6 +37,9 @@ export const FinalGame = ({ videoType }) => {
     }, [handleKeyDown])
 
     const renderVideo = () => {
+        if (isShowLastSlide) {
+            return <div className={styles.lastSlide}>Спасибо за игру!</div>
+        }
         return (
             <video id="lastVideo" autoPlay className={`${style.video}`} src={videos[videoType]}>
                 Sorry, your browser doesnt support embedded videos.
