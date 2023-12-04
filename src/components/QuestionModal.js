@@ -4,6 +4,7 @@ import { firstGameInitialState } from '../state/themesState'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeScore } from '../store/slices/gameSlice'
 import sberCat from '../assets/video/sberCat.mp4'
+import { setLocalStorageData } from '../utils'
 
 const playersCombinatiobArray = ['1', '2', '3']
 const answersCombinationArray = ['p', 'm', 'Backspace']
@@ -35,7 +36,9 @@ export function QuestionModal({
         m: wrongAnswer,
     }
     const headerContent = firstGameInitialState.find((item) => item.id === rowId)
-
+    // const firstModalCombination = getLocalStorageData('firstModalCombination')
+    // const secondModalCombination = getLocalStorageData('secondModalCombination')
+    // const modalVideoType = getLocalStorageData('modalVideoType')
     const handleChangeScore = useCallback(
         (e) => {
             if (isOpen) {
@@ -46,6 +49,8 @@ export function QuestionModal({
                 ) {
                     setFirstCombination(e.key.toLowerCase())
                     setSecondCombination('')
+                    setLocalStorageData('', 'secondModalCombination', 'Primitive')
+                    setLocalStorageData(e.key.toLowerCase(), 'firstModalCombination', 'Primitive')
                 }
                 if (
                     answersCombinationArray.includes(e.key) &&
@@ -54,6 +59,9 @@ export function QuestionModal({
                 ) {
                     setSecondCombination(e.key.toLowerCase())
                     setVideoType(e.key.toLowerCase())
+                    setLocalStorageData(e.key.toLowerCase(), 'secondModalCombination', 'Primitive')
+                    setLocalStorageData(e.key.toLowerCase(), 'modalVideoType', 'Primitive')
+
                     const video = document.getElementById('answers')
                     if (video) {
                         video.load()
@@ -68,11 +76,15 @@ export function QuestionModal({
                     const payload = { ...players.find((player) => player.id === +firstCombination) }
                     payload.score += score
                     dispatch(changeScore(payload))
+                    console.log(payload, 'payload')
+                    setLocalStorageData(payload, 'players', 'Players')
                 }
 
                 if (firstCombination === e.key.toLowerCase()) {
                     setFirstCombination('')
                     setSecondCombination('')
+                    setLocalStorageData('', 'secondModalCombination', 'Primitive')
+                    setLocalStorageData('', 'firstModalCombination', 'Primitive')
                 }
 
                 if (secondCombination === e.key.toLowerCase() && !!sberCatQuestion) {

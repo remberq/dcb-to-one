@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { allGameTheme } from '../../state/themesState'
 import { allPlayers } from '../../state/playesState'
+import { getLocalStorageData } from '../../utils'
 
 const initialModalState = {
     isOpen: false,
@@ -12,11 +13,10 @@ const initialModalState = {
 }
 
 const initialState = {
-    gameState: allGameTheme[1],
-    modalState: initialModalState,
-    filledQuestions: [],
-    isFieldChanged: false,
-    players: allPlayers[1],
+    gameState: getLocalStorageData('themes') || allGameTheme[1],
+    modalState: getLocalStorageData('modalState') || initialModalState,
+    filledQuestions: getLocalStorageData('fill') || [],
+    players: getLocalStorageData('players') || allPlayers[1],
 }
 
 export const gameSlice = createSlice({

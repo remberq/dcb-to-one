@@ -2,6 +2,7 @@ import { ThemeItem, QuestionItems } from './ThemeItem'
 import styles from '../styles/PlayField.module.css'
 import { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { getLocalStorageData, setLocalStorageData } from '../utils'
 
 const mainArr = ['q', 'w', 'e', 'r']
 const questionArr = ['1', '2', '3', '4', '5']
@@ -14,7 +15,9 @@ export function PlayField() {
     const [combinationOne, setCombinationOne] = useState('')
     const [combinationTwo, setCombinationTwo] = useState('')
     const isThemeChanged = localStorage.getItem('field')
+    const localPlayers = getLocalStorageData('players')
 
+    const mapPlayers = localPlayers || players
     useEffect(() => {
         setCombinationOne('')
         setCombinationTwo('')
@@ -31,19 +34,24 @@ export function PlayField() {
                 ) {
                     setCombinationOne(e.key.toLowerCase())
                     setCombinationTwo('')
+                    setLocalStorageData(e.key.toLowerCase(), 'combinationOne', 'Primitive')
+                    setLocalStorageData('', 'combinationTwo', 'Primitive')
                 }
                 if (
                     questionArr.includes(e.key.toLowerCase()) &&
                     combinationTwo !== e.key.toLowerCase()
                 ) {
                     setCombinationTwo(e.key.toLowerCase())
+                    setLocalStorageData(e.key.toLowerCase(), 'combinationTwo', 'Primitive')
                 }
 
                 if (combinationOne === e.key.toLowerCase()) {
                     setCombinationOne('')
+                    setLocalStorageData('', 'combinationOne', 'Primitive')
                 }
                 if (combinationTwo === e.key.toLowerCase()) {
                     setCombinationTwo('')
+                    setLocalStorageData('', 'combinationTwo', 'Primitive')
                 }
             }
         },
@@ -58,6 +66,9 @@ export function PlayField() {
         }
     }, [handleKeyDown])
 
+    const localCombination =
+        getLocalStorageData('combinationOne') + getLocalStorageData('combinationTwo')
+
     const combination = combinationOne + combinationTwo
 
     const renderPlayThemes = (themes, combination) => {
@@ -70,7 +81,7 @@ export function PlayField() {
                 {theme.questions.map((question) => (
                     <td key={question.id}>
                         <QuestionItems
-                            combination={combination}
+                            combination={localCombination || combination}
                             question={question}
                             setOpenProcess={setOpenProcess}
                         />
@@ -83,11 +94,11 @@ export function PlayField() {
     return (
         <div>
             <table>
-                <tbody>{renderPlayThemes(gameState, combination)}</tbody>
+                <tbody>{renderPlayThemes(gameState, localCombination || combination)}</tbody>
             </table>
 
             <div className={styles.scoreWrap}>
-                {players.map((player, index) => {
+                {mapPlayers.map((player, index) => {
                     return (
                         <div key={index} className={styles.scoreItem}>
                             <img
